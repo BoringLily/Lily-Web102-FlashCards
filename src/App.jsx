@@ -2,31 +2,61 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
+import Card from "../components/Card"
+
+import flashCardList from './flashCardList.js';
+const flashCards = JSON.parse(flashCardList);
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [cardNumber, setCardNumber] = useState(0);
+
+  let cards = []; // flashCards displayed on screen
+  let cardStack=flashCards[0].stackCard;
+  cardStack.forEach(cardItem => {
+    cards.push(<Card question={cardItem.question} answer={cardItem.answer}/>)
+  });
+
+  const maxCards = cards.length;
+
+  const handleNextCard = () => {
+    if(cardNumber+1 < maxCards)
+    {
+     setCardNumber(cardNumber+1);
+    }
+    else
+    {
+     console.log("This is the end")
+      
+    }
+  };
+  const handlePrevCard = () => {
+    if(cardNumber > 0)
+    {
+      setCardNumber(cardNumber-1);
+    }
+    else
+    {
+      console.log("This is the beggining");
+    }
+  };
+
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+
+      <div id="card_container">
+        {/* <Card question={cardStack[cardNumber].question} answer={cardStack[cardNumber].answer}/> */}
+        
+        {cards[cardNumber]}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      
+      <div id="card_nav">
+        <button onClick={handlePrevCard} className="card_nav_button"> {"<--"} </button>
+        <div id='card_count'>{cardNumber+1}/{maxCards}</div>
+        <button onClick={handleNextCard} className="card_nav_button">{"-->"} </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </div>
   )
 }
