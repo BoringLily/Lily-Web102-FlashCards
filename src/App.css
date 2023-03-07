@@ -5,23 +5,136 @@
   text-align: center;
 }
 
-.App{
+body {
+  background-color: #fff8ed;
+}
+
+.App {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.card_set_title{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 100%;
+  width: 80%;
+  height: max-content;
+  
+  text-align: center;
+  padding-bottom: 8px;
 
-#card_nav{
-display: flex;
-flex-direction: row;
-flex-wrap: nowrap;
-justify-content: center;
-align-items: center;
-padding: 1rem;
+  color: #282828;
+}
+.card_set_description{
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 100%;
+  width: 60%;
+  height: max-content;
+  
+  text-align: center;
+  padding: 0px 0px 2rem;
+
+  color: #5d5d5d;
 }
 
-#card_count{
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly; */
+  align-content: topt; 
+
+  background-color: rgb(250, 252, 253);
+
+  border-radius: 20px;
+
+  padding: 1rem 2rem;
+
+  width: 500px;
+  height: 300px;
+  box-shadow: 2px 4px 15px #0000000a;
+}
+
+.card_side{
+  width: 100%;
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 100%;
+
+  color: #3a1a4b;
+
+  justify-self: left;
+  text-align: left;
+
+  padding: 1rem 0px;
+  margin-bottom: 1rem;
+}
+
+.card_content {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 100%;
+  width: 100%;
+  height: max-content;
+  
+  text-align: center;
+  padding: 1rem 0px;
+
+  color: #000000;
+}
+
+#card_nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card_nav_button{
+ background-color: rgb(208, 233, 254);
+}
+
+#card_count {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 100%;
+  letter-spacing: 5px;
+
+  text-align: center;
+
+  color: #414a5b;
+
+  margin: 1rem 0px;
   padding: 0% 1rem;
 }
 
+.button_inactive{
+  background-color: rgba(208, 233, 254, 0.436);
+}
+
+.button_inactive:hover{
+transition: none;
+border: 1px solid transparent;
+cursor: not-allowed;
+}
+
+.button_inactive:focus{
+  transition: none;
+  border: 1px solid transparent;
+  cursor: not-allowed;
+  }
