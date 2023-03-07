@@ -5,24 +5,26 @@ import './App.css'
 import flashCardList from './flashCardList.js';
 const flashCards = JSON.parse(flashCardList);
 
-function randomize(list) {
-  let index = list.length, randomIndex;
 
-  while (index != 0) {
-    randomIndex = Math.floor(Math.random() * index);
-    index--;
-    [list[index], list[randomIndex]] = [list[randomIndex], list[index]];
+// IDK, but this keeps shuffling the values inside the objects of the array.
+function randomize(array) {
+  let i = array.length;
+  while (i--) {
+    const ri = Math.floor(Math.random() * i);
+    [array[i], array[ri]] = [array[ri], array[i]];
   }
-
-  return list;
+  return array;
 }
 
 function App() {
   const [cardNumber, setCardNumber] = useState(0);
   const [cardAnswer, setCardAnswer] = useState(false);
 
-  let cardStack = randomize(flashCards[0].stackCard);
+  // bug in randomizer function
+  //let cardStack = randomize(flashCards[0].stackCard);
   
+  let cardStack = flashCards[0].stackCard;
+
   const maxCards = cardStack.length;
 
   const handleShowAnswer = ()=> {setCardAnswer(!cardAnswer);}
