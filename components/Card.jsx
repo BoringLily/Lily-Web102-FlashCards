@@ -5,7 +5,7 @@ import './Card.css'
 
 export default function Card(props)
 {
-  const [cardAnswer, setCardAnswer] = useState(0);
+  const [cardAnswer, setCardAnswer] = useState(false);
   
   const handleShowAnswer = ()=> {setCardAnswer(!cardAnswer);}
   return (
