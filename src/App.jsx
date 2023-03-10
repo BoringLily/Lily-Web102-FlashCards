@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
@@ -54,15 +54,16 @@ function App() {
       console.log("This is the beginning.");
     }
   };
-
+  
   return (
     <div className="App">
 
       <div className='card_set_title'>{flashCards[0].stackTitle}</div>
       <div className='card_set_description'>{flashCards[0].stackDescription}</div>
-      <button className={"card "+ (cardAnswer ? "card_back":"card_front")} onClick={handleShowAnswer} >
-        <div className={'card_side ' + (cardAnswer?"card_text_unflip":"")}>{cardAnswer ? "Answer" : "Question"}</div>
-        <div className={'card_content ' + (cardAnswer?"card_text_unflip":"")}>{cardAnswer ? cardStack[cardNumber].answer : cardStack[cardNumber].question}</div>
+      <button className="card" onClick={handleShowAnswer} >
+        <div className={"flip_card "+ (cardAnswer ? "card_back":"card_front")}></div>
+        <div className='card_side '>{cardAnswer ? "Answer" : "Question"}</div>
+        <div className='card_content'>{cardAnswer ? cardStack[cardNumber].answer : cardStack[cardNumber].question}</div>
       </button>
 
       <div id="card_nav">
