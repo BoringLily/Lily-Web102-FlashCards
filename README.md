@@ -1,4 +1,4 @@
-# Web Development Project 3 - *Flashcards(not_Quizlet) Part 1*
+# Web Development Project 3 - *Flashcards(not_Quizlet) Part 2*
 
 Submitted by: **Lily**
 
