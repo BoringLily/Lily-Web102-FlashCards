@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #fff8ed;
+  background-color: #faf9f6;
 }
 
 .App {
@@ -45,100 +45,56 @@ body {
 }
 
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: top; 
-
-  background-color: #00000000;
-
-  border-radius: 20px;
-
-  padding: 1rem 2rem;
-
-  width: 500px;
-  height: 300px;
- 
+  background-color: transparent;
+  perspective: 1000px;
 }
 
 .flip_card{
-  perspective: 1000px;
   box-shadow: 2px 4px 15px #0000000a;
-  position: absolute;
+  position: relative;
   top: 0px;
   left: 0px;
-  width: 100%;
-  height: 100%;
+   
+  width: 500px;
+  height: 300px;
+
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: top;
+
+  padding: 2rem 2.5rem;
+
   border-radius: 20px;
-  background-color: rgb(250, 252, 253);
   background: rgb(231,240,255);
-  background: linear-gradient(119deg, rgba(231,240,255,0.19511554621848737) 0%, rgba(237,218,255,0.4864320728291317) 100%);
+  background: linear-gradient(119deg, rgba(117, 168, 255, 0.554) 0%, rgba(237,218,255,0.4864320728291317) 100%);
 }
 
-.card_front{
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  transform: rotateY(0deg);
+.card_front, .card_back {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
 }
 
 .card_back{
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  transform: rotateY(-180deg);
-  animation: cardFlip 1s;
+  transform: rotateY(180deg);
 }
 
-.card:focus.card:focus-visible > .card_side{
-  opacity: 1;
-  animation: fadeIn 1s;
+.card_front{
+  transform: rotateY(0deg);
 }
 
-.card_side.text_fade_in{
-  display: block;
+.showFlip{
+  /* transition: transform 0.8s; */
+  transform: rotateY(180deg);
 }
 
-.card_side.text_fade_out{
-  animation-delay: .5s;
-  opacity: 0;
-  animation: fadeIn 1s;
-}
-
-
-@keyframes cardFlip{
-  0% {transform: rotateY(0deg); }
-  10% {transform: rotateY(0deg); }
-  15% {transform: rotateY(10deg);}
-  80% {transform: rotateY(170deg);}
-  85% {transform: rotateY(180deg); }
-  100% {transform: rotateY(180deg); }
-}
-
-@keyframes fadeIn{
-  0% { opacity: 0; }
-  1% { opacity: 0;}
-  5% {opacity: 0;}
-  10% {opacity: 0;}
-  85%{ opacity: 0;}
-  90% {opacity: 0.3;}
-  95% {opacity: 0.8;}
-  100% { opacity: 1;}
-}
-
-@keyframes fadeIn2{
-  0% { color: #3a1a4b00; }
-  100% { color: #3a1a4bff; }
-}
-
-@keyframes fadeInFront{
-  0% { opacity: 1;}
-  1% { opacity: 0.1;}
-  5% {opacity: 0;}
-  10% {opacity: 0;}
-  85%{ opacity: 0;}
-  90% {opacity: 0.3;}
-  95% {opacity: 0.8;}
-  100% { opacity: 1; }
+.card_hide{
+  display: none;
 }
 
 .card_side{
@@ -148,17 +104,12 @@ body {
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 100%;
-  color: #3a1a4b00;
-
-  opacity: 0;
-  transition: opacity 1s;
+  color: #3a1a4b;
   justify-self: left;
   text-align: left;
 
   padding: 1rem 0px;
   margin-bottom: 1rem;
-  
-  z-index: 2;
 }
 
 .card_content{
@@ -172,9 +123,34 @@ body {
   text-align: center;
   padding: 1rem 0px;
 
-  z-index: 2;
-
   color: #000000;
+}
+
+.answer_title{
+  width: 100%;
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 100%;
+  color: #3a1a4b;
+  justify-self: center;
+  text-align: center;
+
+  padding: 1rem 0px;
+  margin-top: 1rem;
+}
+
+.answer_box{
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.check_answer_button{
+  border-radius: 20px;
+  background-color: rgb(74, 174, 255);
+  margin-left: 1rem;
+  padding: 1rem;
 }
 
 #card_nav {
